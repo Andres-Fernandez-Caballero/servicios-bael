@@ -1,4 +1,3 @@
-const ImageUtils = require('../../utils/image.utils')
 const imageUtils = require("../../utils/image.utils");
 
 const servicesList = [
@@ -16,10 +15,6 @@ class Service {
         this.code = code;
         this.date = date;
         this.image = imageUtils.getImageByDayOfWeek(code, date);
-    }
-
-    getImage() {
-        return this.image;
     }
 }
 
