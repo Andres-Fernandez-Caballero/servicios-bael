@@ -6,10 +6,14 @@ const serviceController = require("./services/controllers/service.controller");
 const app = express();
 
 const assetsPath = path.join(__dirname,  'assets');
+const publicPath = path.join(__dirname, '/../public')
+console.log(publicPath);
 
-console.log(assetsPath)
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(assetsPath));
+app.use(express.static(publicPath));
 
 app.get('/', serviceController.index);
 
