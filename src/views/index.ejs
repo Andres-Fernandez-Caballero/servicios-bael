@@ -1,4 +1,3 @@
-<body>
 <%- include('partials/head')%>
 <%- include('partials/navbar')%>
 
@@ -8,8 +7,8 @@
         <article class="col-md-4">
             <h2 class="">Servicio de hoy</h2>
             <ul class="list-group d-none d-md-block">
-                <li class="list-group-item">servico&nbsp;<span><%=service.code%></span></li>
-                <li class="list-group-item">dia&nbsp;<span><%=new Date(service.date).getDate()%></span></li>
+                <li class="list-group-item">servico&nbsp;<span><%= service.code%></span></li>
+                <li class="list-group-item">dia&nbsp;<span><%= service.day%></span></li>
             </ul>
 
         </article>
@@ -17,16 +16,13 @@
             <img
                     class="animate__animated animate__zoomIn image-fluid rounded"
                     width="300" height="355"
-                    src="/servicios/<%=service.image%>"
-                    alt="servicio <%= service.code%>">
+                    src="/servicios/<%= service.image%>"
+                    alt="servicio <%= service.image%>">
         </figure>
 
 
     </section>
     </main>
 
-
 <%- include('partials/footer')%>
 <%- include('partials/scripts')%>
-</body>
-</html>

@@ -1,6 +1,6 @@
 {
   "name": "serviciosbael",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "sitio web dinamico que utilizando tareas cron actualiza la imagen del servicio correspondiente al dia de la fecha",
   "main": "index.js",
   "author": "Andres Fernandez",
@@ -8,7 +8,10 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node index.js",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "test": "cross-env NODE_ENV=test jest "
+    "dev:details": "cross-env NODE_ENV=development node --trace-warnings index.js",
+    "test:watch": "cross-env NODE_ENV=test jest --watch ",
+    "test:once": "cross-env NODE_ENV=test jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
@@ -16,11 +19,13 @@
     "ejs": "^3.1.6",
     "env-cmd": "^10.1.0",
     "express": "^4.17.2",
+    "moment": "^2.29.1",
     "node-cron": "^3.0.0",
     "node-localstorage": "^2.2.1"
   },
   "devDependencies": {
     "jest": "^27.4.5",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6"
   }
 }

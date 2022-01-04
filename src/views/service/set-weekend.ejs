@@ -1,0 +1,22 @@
+<%- include('./../partials/head')%>
+<%- include('./../partials/navbar')%>
+
+<main class="container-fluid mx-auto">
+    <h2>Configuraciones</h2>
+    <p>La fecha del franco corresponde al primer dia del servicio, no es posible asignar francos o semanas en el futuro</p>
+
+    <form action="/week" method="post">
+        <div class="row mx-auto">
+            <div class="mb-3 col-12">
+                <label for="initDate" class="form-label">Fecha del Franco</label>
+                <input type="date" class="form-control" id="initDate" name="initDate">
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </form>
+</main>
+
+<%- include('./../partials/footer')%>
+<%- include('./../partials/scripts')%>

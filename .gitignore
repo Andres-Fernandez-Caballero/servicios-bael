@@ -1,5 +1,14 @@
+# IDES CONFIG FOLDERS
 .idea/
+.vscode/
+
 
 .env
 node_modules/
+src/database/localstorage/actualService
+src/database/localstorage/week
+src/database/localstorage/development
+src/database/localstorage/test/
+src/database/localstorage/production/
+coverage/
 *.log

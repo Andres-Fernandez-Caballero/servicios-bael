@@ -1,18 +1,29 @@
-const imageUtils = require("../../utils/image.utils");
+const imageUtils = require("../../utils/Image.utils");
+const {DateUtils} = require('../../utils/Date.utils');
+const {isAValidDate} = DateUtils;
+const FRANCO = 0;
 
 const servicesList = [
-    'proximo-franco',
+    0,
     39,
     40,
     41,
     42,
     43,
-    'proximo-franco'
 ];
 
 class Service {
     constructor(code, date) {
-        this.code = code;
+
+        if(code < 0 || isNaN(code)){
+            throw TypeError('code should be a number equal or higher than ZERO');
+        }
+
+        if(!isAValidDate){
+            throw TypeError('date must be a valid date');
+        }
+
+        this.code = parseInt(code, 10);
         this.date = date;
         this.image = imageUtils.getImageByDayOfWeek(code, date);
     }
@@ -21,5 +32,6 @@ class Service {
 
 module.exports = {
     servicesList,
-    Service
+    Service,
+    FRANCO
 }

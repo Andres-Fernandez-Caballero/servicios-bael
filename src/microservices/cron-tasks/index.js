@@ -1,8 +1,10 @@
 const cron = require('node-cron');
-const checkForServices = require('./actions');
+const CronJobs = require("./CronJobs");
 
 const cornTasks = () => {
-    cron.schedule('0 0 0 * * *', checkForServices);
+    cron.schedule('0 0 0 * * *', () => {
+        new CronJobs().execute();
+    });
 }
 
 module.exports = cornTasks;

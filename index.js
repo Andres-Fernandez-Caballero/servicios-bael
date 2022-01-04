@@ -7,5 +7,5 @@ if(appConfig.MICROSERVICES.cornTasksEnabled){
 }
 
 app.listen(appConfig.PORT, () => {
-    console.log('servicor escuchando en el puerto ' + appConfig.PORT) })
+    console.log('Servicor http://localhost:' + appConfig.PORT) });
 
