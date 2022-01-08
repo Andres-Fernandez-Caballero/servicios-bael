@@ -7,5 +7,5 @@ if(appConfig.MICROSERVICES.cornTasksEnabled){
 }
 
 app.listen(appConfig.PORT, () => {
-    console.log('Servicor http://localhost:' + appConfig.PORT) });
+    console.log(`--------------------------------\nServicor Iniciado\nPuede ingresar localmente en\nhttp://localhost:${appConfig.PORT}\nen modo ${appConfig.ENVIRONMENT}\n--------------------------------` ) });
 
