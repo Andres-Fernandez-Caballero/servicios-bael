@@ -6,7 +6,7 @@
   "author": "Andres Fernandez",
   "license": "MIT",
   "scripts": {
-    "start": "cross-env DEPLOY_MODE=production node index.js",
+    "start": "node index.js",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "dev:details": "cross-env NODE_ENV=development node --trace-warnings index.js",
     "test:watch": "cross-env NODE_ENV=test jest --watch ",
