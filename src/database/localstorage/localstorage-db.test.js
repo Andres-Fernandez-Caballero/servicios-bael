@@ -1,5 +1,5 @@
 const path = require('path');
-const db = require('./localstorage/localStorageDb');
+const db = require('./localStorageDb');
 const fs = require('fs');
 
 
