@@ -9,6 +9,6 @@ src/database/localstorage/actualService
 src/database/localstorage/week
 src/database/localstorage/development
 src/database/localstorage/test/
-src/database/localstorage/production/
+src/database/localstorage/production/week
 coverage/
 *.log
