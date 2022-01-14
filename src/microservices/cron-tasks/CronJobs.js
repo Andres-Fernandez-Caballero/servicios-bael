@@ -1,5 +1,5 @@
 const UpdaterCurrentWeek = require('./../../services/busynessLogic/UpdaterCurrentWeek');
-const Task = require('./../../intefraces/Task')
+const Task = require('../../intefraces/Taskeable')
 
 class CronJobs extends Task {
 
@@ -10,14 +10,14 @@ class CronJobs extends Task {
         ]
     }
 
-    execute() {
-        this.jobs.forEach(job => {
+    async execute() {
+        for (const job of this.jobs) {
             try{
-                job.execute()
+                await job.execute()
             }catch (e) {
                 console.log(e);
             }
-        })
+        }
     }
 }
 

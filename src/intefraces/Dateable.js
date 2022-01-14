@@ -1,4 +1,4 @@
-class IDate {
+class Dateable {
 
     getDay() {
         throw Error ('method not implemented')
@@ -25,4 +25,4 @@ class IDate {
     }
 }
 
-module.exports = IDate;
+module.exports = Dateable;

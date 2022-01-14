@@ -2,10 +2,15 @@ const app = require('./src/app');
 const appConfig = require("./src/config");
 const cronTasks = require('./src/microservices/cron-tasks/index');
 
-if(appConfig.MICROSERVICES.cornTasksEnabled){
+if(appConfig.microservicesConfigs.MICROSERVICES.cornTasksEnabled){
     cronTasks();
 }
 
-app.listen(appConfig.PORT, () => {
-    console.log(`--------------------------------\nServicor Iniciado\nPuede ingresar localmente en\nhttp://localhost:${appConfig.PORT}\nen modo ${appConfig.ENVIRONMENT}\n--------------------------------` ) });
-
+app.listen(appConfig.serverConfigs.PORT, () => {
+    console.log('--------------------------------')
+    console.log('Servicor Iniciado')
+    console.log(`MODO: ${appConfig.serverConfigs.ENVIRONMENT}`)
+    console.log('Puede ingresar localmente en')
+    console.log(`http://localhost:${appConfig.serverConfigs.PORT}`)
+    console.log('--------------------------------')
+})

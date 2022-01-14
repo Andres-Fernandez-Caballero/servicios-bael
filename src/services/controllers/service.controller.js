@@ -5,46 +5,41 @@ const {CalendarDate} = require("../../utils/Date.utils");
 
 
 const  serviceController = {
-    index: (req, res) => {
+    index: async (req, res) => {
+       try {
+           const currentWeek = await ServiceActions.getWeek();
+           if(currentWeek !== null){
+                const actualService = currentWeek.getServiceByDate(new CalendarDate());
+                if(actualService === null){
+                    res.redirect('/week')
+                }else{
+                    res.render('index', {service: new CurrentServiceDto(actualService)})
+                }
 
-        try{
-            const currentWeek = ServiceActions.getWeek();
-            if(currentWeek === null){
-                res.render('service/set-weekend');
-            }
+           }
 
-            console.log(new CalendarDate());
-
-            const service = new CurrentServiceDto(currentWeek
-                .getServiceByDate(new CalendarDate())
-            );
-
-            res.render('index', {service});
-
-        }catch (e){
-            ServiceActions.removeWeek()
-            res.send('recurso no encontrado')
-
-        }
+       }catch (e) {
+            res.send(e)
+       }
     },
 
     setCurrentWeek: (req, res) => {
         res.render('service/set-weekend');
     },
 
-    storeCurrentWeek: (req, res) => {
+    storeCurrentWeek: async (req, res) => {
 
             const {initDate} = req.body;
 
         console.log('initDate: ' + initDate);
 
             try{
-                new UpdaterCurrentWeek().updateWeek(new CalendarDate(initDate),[39, 40, 41, 42, 43]);
+               await ServiceActions.updateWeek(new CalendarDate(initDate),[39, 40, 41, 42, 43]);
             }catch (e) {
                 console.log('ERRRRORRRRRRRRR')
             }
 
-            const week = ServiceActions.getWeek();
+            const week = await ServiceActions.getWeek();
             console.log(week)
             res.redirect('/');
     },

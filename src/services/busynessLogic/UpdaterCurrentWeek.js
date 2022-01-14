@@ -1,46 +1,40 @@
 const ServiceActions  = require("./Service.actions");
 const {DateUtils, CalendarDate} = require("../../utils/Date.utils");
-const Task = require("../../intefraces/Task");
+const ITask = require("../../intefraces/Taskeable");
 
 
-class UpdaterCurrentWeek extends Task {
+class UpdaterCurrentWeek extends ITask {
 
     constructor(date = new CalendarDate()) {
         super();
-        if(!DateUtils.isAValidDate(date)){
-            throw TypeError('date must be a valid date')
-        }
+        if(!DateUtils.isAValidDate(date)) throw TypeError('date must be a valid CalendarDate object')
+
         this.date = date;
+
     }
 
-    isTImeToUpdate() {
-        const week = ServiceActions.getWeek();
+      async execute() {
+        return new Promise(async (resolve, reject) => {
+            console.log('chequeando semana...');
 
-        if(week === null){
-            throw new Error('element week.json not found in the database');
-        }
+            const weekFromDatabase = await ServiceActions.getWeek()
 
-        return ServiceActions.isTimeToReBuildTheWeek(this.date, week);
-    }
+            if(await ServiceActions.isTimeToReBuildTheWeek(this.date, weekFromDatabase)){
+                console.log('Reiniciando la semana');
 
-    updateWeek(new_initial_date, codes){
-        const week = ServiceActions.prepareWeek(new_initial_date, codes);
-        ServiceActions.storeWeek(week);
-    }
+                await ServiceActions.updateWeek(
+                    DateUtils.addDays(this.date, 1),
+                    weekFromDatabase.getCodes()
+                )
 
-    execute() {
-        console.log('chequeando semana...');
-        if(this.isTImeToUpdate()){
-            const week = ServiceActions.getWeek();
-            const newInitDate = DateUtils.addDays(this.date, 1);
-
-            this.updateWeek(newInitDate, week.getCodes())
-            console.log('semana reiniciada!!! 🎉')
-            return true;
-        }else{
-            console.log('no es necesario reiniciar la semana')
-            return false
-        }
+                console.log('semana reiniciada!!! 🎉')
+                resolve(true);
+            }else {
+                console.log('no es necesario reiniciar la semana')
+                resolve(false);
+            }
+            // console.log('no se pudo chequear la semana')
+        })
     }
 }
 

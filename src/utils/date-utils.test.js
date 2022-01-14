@@ -1,11 +1,16 @@
 const {DateUtils, CalendarDate, alterIsAVlaidDate, daysOfWeek} = require('./Date.utils');
-const IDate = require("../intefraces/IDate");
+const IDate = require("../intefraces/Dateable");
 
 const {isAValidDate, isSameDate, addDays} = DateUtils;
 
 describe('UNIT TEST DateUtils', () => {
 
    describe('UNIT TEST CalendarDate Class', () => {
+      it('a empty constructor should create a current date', () => {
+         console.log(new CalendarDate().toString());
+         expect(alterIsAVlaidDate(new CalendarDate().toISODateString()))
+      })
+
       it('should create a CalendarDate with correct params yyyy-MM-dd string format',() => {
          expect(
              () => {new CalendarDate(123)}
@@ -34,9 +39,13 @@ describe('UNIT TEST DateUtils', () => {
          expect(
              () => {new CalendarDate()}
          ).not.toThrow()
+
+         expect(
+             () => {new CalendarDate}
+         ).not.toThrow()
       })
 
-      it('CalendarDate shoud be a IDate Objet', () => {
+      it('CalendarDate should be a Dateable Objet', () => {
          expect(new CalendarDate()).toBeInstanceOf(IDate)
          expect(new CalendarDate('2022-01-01')).toBeInstanceOf(IDate);
       })

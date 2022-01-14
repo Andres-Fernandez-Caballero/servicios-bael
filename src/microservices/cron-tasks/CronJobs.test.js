@@ -1,5 +1,5 @@
 const CronJobs = require('./CronJobs');
-const Task = require('./../../intefraces/Task');
+const Task = require('../../intefraces/Taskeable');
 const ServiceActions = require("../../services/busynessLogic/Service.actions");
 const {CalendarDate} = require("../../utils/Date.utils");
 

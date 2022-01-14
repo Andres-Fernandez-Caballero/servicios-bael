@@ -20,6 +20,5 @@ app.get('/', serviceController.index);
 app.get('/week',serviceController.setCurrentWeek);
 app.post('/week', serviceController.storeCurrentWeek);
 
-
 module.exports = app;
 

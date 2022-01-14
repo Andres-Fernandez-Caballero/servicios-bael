@@ -1,6 +1,6 @@
 {
   "name": "serviciosbael",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "sitio web dinamico que utilizando tareas cron actualiza la imagen del servicio correspondiente al dia de la fecha",
   "main": "index.js",
   "author": "Andres Fernandez",
@@ -20,6 +20,7 @@
     "env-cmd": "^10.1.0",
     "express": "^4.17.2",
     "moment": "^2.29.1",
+    "mongodb": "^4.3.0",
     "node-cron": "^3.0.0",
     "node-localstorage": "^2.2.1"
   },
