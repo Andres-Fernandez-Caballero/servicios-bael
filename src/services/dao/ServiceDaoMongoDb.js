@@ -7,14 +7,15 @@ const {CalendarDate} = require("../../utils/Date.utils");
 
 class ServiceDaoMongoDb extends ServiceDao {
 
-    constructor() {
+    constructor(environment) {
         super();
-        this.database = 'services'
+        this.database = `services_${environment}`
         this.weekCollectionName = 'week';
     }
 
     async storeWeek(week) {
         if(week === null || week === undefined) throw Error("week don't be null or undefined")
+
         if(!(week instanceof Week)) throw TypeError('week must be a Week object');
 
         await client.connect()
@@ -52,8 +53,11 @@ class ServiceDaoMongoDb extends ServiceDao {
                     } else {
                         resolve(null)
                     }
-                    await cursor.close();
+                    cursor.close();
                     await client.close()
+                })
+                .catch(() => {
+                    reject('cant get a week from the database')
                 })
         });
 

@@ -1,5 +1,5 @@
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
+
 
 const appConfig = {
 
@@ -12,7 +12,7 @@ const appConfig = {
     databaseConfigs: {
         DATABASE_PROVIDER: process.env.DATABASE_PROVIDER,
         DATABASE_USER: process.env.DATABASE_USER || 'root',
-        DATABASE_PASSWORD: process.env.DATABASE || '',
+        DATABASE_PASSWORD: process.env.DATABASE_PASSWORD || '',
         DATABASE_URL: process.env.DATABASE_URL || 'http://localhost',
     },
 

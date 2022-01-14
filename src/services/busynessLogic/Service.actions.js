@@ -24,7 +24,13 @@ const ServiceActions = {
     },
 
     getWeek: async() => {
-        return await serviceDao.getWeek();
+        try{
+            return await serviceDao.getWeek();
+        }catch (e) {
+            console.log(e);
+            return null;
+        }
+
     },
 
     removeWeek: async () => {

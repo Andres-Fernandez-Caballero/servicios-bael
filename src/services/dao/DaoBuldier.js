@@ -7,7 +7,7 @@ const DaoBuilder = {
    getDaoService: () => {
         switch (appConfig.databaseConfigs.DATABASE_PROVIDER){
             case 'mongodb':
-                return new ServiceDaoMongoDb();
+                return new ServiceDaoMongoDb(appConfig.serverConfigs.ENVIRONMENT);
 
             case 'localstorage':
                 return new ServiceDaoLocalStorage();

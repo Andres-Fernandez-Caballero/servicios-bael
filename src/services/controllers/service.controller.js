@@ -1,6 +1,5 @@
 const ServiceActions = require('./../busynessLogic/Service.actions');
 const CurrentServiceDto = require("../dto/CurrentService.dto");
-const UpdaterCurrentWeek = require("../busynessLogic/UpdaterCurrentWeek");
 const {CalendarDate} = require("../../utils/Date.utils");
 
 
@@ -8,6 +7,7 @@ const  serviceController = {
     index: async (req, res) => {
        try {
            const currentWeek = await ServiceActions.getWeek();
+
            if(currentWeek !== null){
                 const actualService = currentWeek.getServiceByDate(new CalendarDate());
                 if(actualService === null){
@@ -15,7 +15,8 @@ const  serviceController = {
                 }else{
                     res.render('index', {service: new CurrentServiceDto(actualService)})
                 }
-
+           }else{
+               res.redirect('/week')
            }
 
        }catch (e) {
