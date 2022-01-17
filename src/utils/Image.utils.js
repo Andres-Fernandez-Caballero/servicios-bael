@@ -13,7 +13,7 @@ const ImageUtils = {
         }
 
         if(code === 0){
-            return 'franco.jpg'
+            return 'franco-min.jpg'
         }
 
         let image = `serv-${code}-`;
@@ -22,13 +22,13 @@ const ImageUtils = {
 
 
         if(dayOfWeek>=daysOfWeek.MONDAY && dayOfWeek <= daysOfWeek.FRIDAY ){
-            return image.concat('lv').concat('.jpg');
+            return image.concat('lv').concat('-min.jpg');
 
         }else if(dayOfWeek === daysOfWeek.SATURDAY) {
-            return image.concat('sa').concat('.jpg');
+            return image.concat('sa').concat('-min.jpg');
 
         }else if (dayOfWeek === daysOfWeek.SUNDAY) {
-            return image.concat('do').concat('.jpg');
+            return image.concat('do').concat('-min.jpg');
         }
     }
 }
