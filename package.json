@@ -1,11 +1,12 @@
 {
   "name": "serviciosbael",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "sitio web dinamico que utilizando tareas cron actualiza la imagen del servicio correspondiente al dia de la fecha",
   "main": "index.js",
   "author": "Andres Fernandez",
   "license": "MIT",
   "scripts": {
+    "prestart": "node src/microservices/cron-tasks/action.js",
     "start": "node index.js",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "dev:details": "cross-env NODE_ENV=development node --trace-warnings index.js",

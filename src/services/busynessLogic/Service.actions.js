@@ -2,7 +2,7 @@ const {Service} = require('./../models/Service');
 const {Week} = require("../models/Week");
 const {DateUtils} = require("../../utils/Date.utils");
 const ServicesDaoBuildier = require("../dao/DaoBuldier");
-const {addDays, isSameDate} = DateUtils;
+const {addDays} = DateUtils;
 const serviceDao = ServicesDaoBuildier.getDaoService();
 
 
@@ -38,17 +38,12 @@ const ServiceActions = {
     },
 
     getActualService: async() => {
-        //TODO: should return the actual service from the current week
+        //TODO: should return the actual service from the current week or cookie data
     },
 
     isTimeToReBuildTheWeek: (date, week) => {
-
-        const serviceByDate = week.getServiceByDate(date);
-        const lastService = week.getLastService()
-
-        if(serviceByDate === null) return false;
-
-        return (serviceByDate.code === lastService.code && isSameDate(serviceByDate.date, lastService.date) );
+        const dateFromLastService = week.getLastService().date;
+        return date > dateFromLastService;
 
     },
 

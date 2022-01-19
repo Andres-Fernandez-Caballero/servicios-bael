@@ -10,7 +10,5 @@ app.listen(appConfig.serverConfigs.PORT, () => {
     console.log('--------------------------------')
     console.log('Servicor Iniciado')
     console.log(`MODO: ${appConfig.serverConfigs.ENVIRONMENT}`)
-    console.log('Puede ingresar localmente en')
-    console.log(`http://localhost:${appConfig.serverConfigs.PORT}`)
     console.log('--------------------------------')
 })

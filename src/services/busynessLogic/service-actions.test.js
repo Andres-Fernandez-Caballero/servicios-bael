@@ -55,6 +55,7 @@ describe('UNIT TEST ServiceActions', () => {
     })
 
     describe('method isTimeToReBuildTheWeek ',() => {
+
         it('if date parameter is the same than the date attribute in the last service of the week.json should return true', function () {
 
             const date = new CalendarDate('2021-01-01')
@@ -66,12 +67,14 @@ describe('UNIT TEST ServiceActions', () => {
             console.log(ServiceActions.isTimeToReBuildTheWeek(new CalendarDate('2021-01-03'), week))
             console.log(ServiceActions.isTimeToReBuildTheWeek(new CalendarDate('2021-01-04'), week))
 
-            expect(ServiceActions.isTimeToReBuildTheWeek(new CalendarDate('2021-02-03'), week)).not.toBeTruthy()
+
             expect(ServiceActions.isTimeToReBuildTheWeek(new CalendarDate('2021-01-01'), week)).not.toBeTruthy()
             expect(ServiceActions.isTimeToReBuildTheWeek(new CalendarDate('2021-01-02'), week)).not.toBeTruthy()
             expect(ServiceActions.isTimeToReBuildTheWeek(new CalendarDate('2021-01-03'), week)).not.toBeTruthy()
-            expect(ServiceActions.isTimeToReBuildTheWeek(new CalendarDate('2021-01-04'), week)).toBeTruthy()
-
+            expect(ServiceActions.isTimeToReBuildTheWeek(new CalendarDate('2021-01-04'), week)).not.toBeTruthy()
+            expect(ServiceActions.isTimeToReBuildTheWeek(new CalendarDate('2021-01-05'), week)).toBeTruthy()
+            expect(ServiceActions.isTimeToReBuildTheWeek(new CalendarDate('2021-01-06'), week)).toBeTruthy()
+            expect(ServiceActions.isTimeToReBuildTheWeek(new CalendarDate('2021-02-03'), week)).toBeTruthy()
         });
     })
 
