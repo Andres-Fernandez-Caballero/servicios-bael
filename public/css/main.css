@@ -1,14 +1,28 @@
 body{
     height: 100vh;
 }
+.list-group-item:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+figure {
+    margin: 0
+}
 
 main {
     margin-top:2rem;
     margin-bottom: 5rem;
 }
 
-@media  (max-width:576px) {
+@media (min-width:577px) {
+     #galleryControl {
+         margin: auto;
+         width:300px;
+     }
+}
 
+@media  (max-width:576px) {
     main {
         margin-top:2rem;
         margin-bottom: 3rem;
@@ -17,6 +31,10 @@ main {
     main figure img {
         margin: 1rem auto auto;
         display: block;
-
     }
+
+    footer {
+        margin-top: 0;
+    }
+
 }

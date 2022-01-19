@@ -1,6 +1,7 @@
 const ServiceActions = require('./../busynessLogic/Service.actions');
 const CurrentServiceDto = require("../dto/CurrentService.dto");
 const {CalendarDate} = require("../../utils/Date.utils");
+const GalleryServicesDto = require("../dto/GalleryServices.dto");
 
 
 const  serviceController = {
@@ -24,7 +25,7 @@ const  serviceController = {
        }
     },
 
-    setCurrentWeek: (req, res) => {
+    setCurrentWeek: async (req, res) => {
         res.render('service/set-weekend');
     },
 
@@ -44,6 +45,11 @@ const  serviceController = {
             console.log(week)
             res.redirect('/');
     },
+    gallery: async (req, res) => {
+        const {services} = await ServiceActions.getWeek();
+        res.render('service/gallery', {services: new GalleryServicesDto(services).services} )
+
+    }
 }
 
 module.exports = serviceController;
