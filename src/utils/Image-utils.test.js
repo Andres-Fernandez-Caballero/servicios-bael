@@ -4,7 +4,7 @@ const {CalendarDate} = require("./Date.utils");
 
 
 describe('UNIT TEST imageUtils',() => {
-    it('getImageByDayOfWeek code parameter sould be a number or throw a exeption', () => {
+    it('getImageByDayOfWeek code parameter should be a number or throw a exception', () => {
 
         expect(() => {
             getImageByDayOfWeek(undefined, new CalendarDate())
@@ -35,14 +35,14 @@ describe('UNIT TEST imageUtils',() => {
         const today = new CalendarDate();
 
 
-        expect(getImageByDayOfWeek(FRANCO, friday)).toBe('franco.jpg');
-        expect(getImageByDayOfWeek(FRANCO, saturday)).toBe('franco.jpg');
-        expect(getImageByDayOfWeek(FRANCO, sunday)).toBe('franco.jpg');
-        expect(getImageByDayOfWeek(FRANCO, today)).toBe('franco.jpg');
+        expect(getImageByDayOfWeek(FRANCO, friday)).toBe('franco-min.jpg');
+        expect(getImageByDayOfWeek(FRANCO, saturday)).toBe('franco-min.jpg');
+        expect(getImageByDayOfWeek(FRANCO, sunday)).toBe('franco-min.jpg');
+        expect(getImageByDayOfWeek(FRANCO, today)).toBe('franco-min.jpg');
 
         const code = 39;
-        expect(getImageByDayOfWeek(code,friday)).toBe('serv-39-lv.jpg');
-        expect(getImageByDayOfWeek(code, saturday)).toBe('serv-39-sa.jpg');
-        expect(getImageByDayOfWeek(code, sunday)).toBe('serv-39-do.jpg');
+        expect(getImageByDayOfWeek(code,friday)).toBe('serv-39-lv-min.jpg');
+        expect(getImageByDayOfWeek(code, saturday)).toBe('serv-39-sa-min.jpg');
+        expect(getImageByDayOfWeek(code, sunday)).toBe('serv-39-do-min.jpg');
     });
 })

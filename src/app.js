@@ -17,7 +17,8 @@ app.use(express.static(publicPath));
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', serviceController.index);
-app.get('/week',serviceController.setCurrentWeek);
+app.get('/gallery', serviceController.gallery);
+app.get('/week', serviceController.setCurrentWeek);
 app.post('/week', serviceController.storeCurrentWeek);
 
 module.exports = app;

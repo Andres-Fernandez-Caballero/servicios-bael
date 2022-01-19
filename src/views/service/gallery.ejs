@@ -1,0 +1,47 @@
+<%- include('./../partials/head')%>
+<%- include('./../partials/navbar')%>
+
+
+<main class="container-fluid mx-auto">
+    <section class="row">
+        <article class="col-md-6">
+            <h2>Lista de servicios</h2>
+            <ul id="itemListGallery" class="list-group d-none d-md-block">
+                <% services.forEach(service => { %>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold"><%=service.day%></div>
+                            <%=service.date%>
+                        </div>
+                        <span class="badge bg-<%=service.code=== 0?'danger':'primary'%> rounded-pill"><%=service.code === 0?"Franco": service.code%></span>
+                    </li>
+                <% }); %>
+            </ul>
+        </article>
+        <figure class="col-md-6">
+            <div id="galleryControl" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
+                <div class="carousel-inner">
+                    <% services.forEach(service => { %>
+                        <div class="carousel-item <%= service.code === 0? 'active': ''%>">
+                            <img src="<%='servicios/' + service.image%>" class="d-block w-100" alt=<%= service.code%> >
+                        </div>
+                    <% }); %>
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#galleryControl" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#galleryControl" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </figure>
+    </section>
+</main>
+
+<%- include('./../partials/footer')%>
+
+<%- include('./../partials/scripts')%>
